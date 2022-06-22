@@ -10,7 +10,7 @@ sudo apt update
 echo "Installing wine 7.10 ...."
 sudo apt install winehq-devel winetricks
 
-echo "\nSetting up wine..."
+echo "Setting up wine..."
 winecfg
-echo "\nDone!"
+echo "Done!"
 
