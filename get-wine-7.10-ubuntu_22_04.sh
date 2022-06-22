@@ -7,7 +7,7 @@ sudo apt update
 wget -nc https://dl.winehq.org/wine-builds/winehq.key
 sudo mv winehq.key /usr/share/keyrings/winehq-archive.key
 sudo apt update
-echo "\nInstalling wine 7.10 ...."
+echo "Installing wine 7.10 ...."
 sudo apt install winehq-devel winetricks
 
 echo "\nSetting up wine..."
