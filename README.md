@@ -1,5 +1,5 @@
 # get-wine-latest.sh
-Install the latest version of wine from winehq's official repositories!
+a simple shell script to Install the latest version of wine from winehq's official repositories without any error.
 To install wine, Simply copy this:
 ```
 apt install wget
