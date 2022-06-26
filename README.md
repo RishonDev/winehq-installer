@@ -1,6 +1,7 @@
 # get-wine-latest.sh
 a simple shell script to Install the latest version of wine from winehq's official repositories without any error.
 To install wine, Simply copy this:
+
 Ubuntu 22.04:
 ```
 sudo apt install wget
