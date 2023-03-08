@@ -1,5 +1,20 @@
 #!/bin/bash
+
 RELEASE=$(lsb_release -sr)
+spin()
+{
+  spinner="/|\\-/|\\-"
+  while :
+  do
+    for i in `seq 0 7`
+    do
+      echo -n "${spinner:$i:1}"
+      echo -en "\010"
+      sleep 0.1
+    done
+  done
+}
+
 #Creates Logs
 mkdir ./logs
 touch ./logs/repoLog.txt
@@ -7,8 +22,17 @@ touch ./logs/repoLog2.txt
 touch ./logs/installLog.txt
 touch ./logs/configLog.txt
 echo "Enabling 32-bit support..."
+spin &
+SPIN_PID=$!
+trap "kill -9 $SPIN_PID" `seq 0 15`
 sudo dpkg --add-architecture i386
+kill -9 $SPIN_PID
+
+
 echo "Adding the repositories..." 
+spin &
+SPIN_PID=$!
+trap "kill -9 $SPIN_PID" `seq 0 15`
 sudo add-apt-repository universe -y &>> ./logs/repoLog2.txt
 {   
 if [ "$RELEASE" = "20.04" ]; then
@@ -31,10 +55,14 @@ fi
     sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key 
     sudo apt update
 } &> ./logs/repoLog.txt
+kill -9 $SPIN_PID
 
 read -p "Install wine? [Y/n]:" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
     then
+    spin &
+    SPIN_PID=$!
+    trap "kill -9 $SPIN_PID" `seq 0 15`
     sudo apt install winehq-stable winetricks &> ./logs/installLog.txt
     winecfg &> ./logs/configLog.txt
 else 
