@@ -1,4 +1,16 @@
 #!/bin/bash
+while getopts ":v:" opt; do
+  case $opt in
+    v)
+      echo "2.1.0"
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      echo "-v Displays the version"
+      exit 1
+      ;;
+  esac
+done
 
 RELEASE=$(lsb_release -sr)
 spin()
@@ -21,7 +33,7 @@ touch ./logs/repoLog.txt
 touch ./logs/repoLog2.txt
 touch ./logs/installLog.txt
 touch ./logs/configLog.txt
-echo "Enabling 32-bit support..."
+echo "Enabling 32-bit support... "
 spin &
 SPIN_PID=$!
 trap "kill -9 $SPIN_PID" `seq 0 15`
@@ -29,7 +41,7 @@ sudo dpkg --add-architecture i386
 kill -9 $SPIN_PID
 
 
-echo "Adding the repositories..." 
+echo "Adding the repositories... " 
 spin &
 SPIN_PID=$!
 trap "kill -9 $SPIN_PID" `seq 0 15`
@@ -57,9 +69,10 @@ fi
 } &> ./logs/repoLog.txt
 kill -9 $SPIN_PID
 
-read -p "Install wine? [Y/n]:" -n 1 -r
+read -p "Install wine? [Y/n]: " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
     then
+    echo
     spin &
     SPIN_PID=$!
     trap "kill -9 $SPIN_PID" `seq 0 15`

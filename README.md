@@ -14,4 +14,3 @@ wget https://raw.githubusercontent.com/RishonDev/get-wine-latest.sh/main/wine-in
 chmod +x wine-installer-ubuntu.sh
 ./wine-installer-ubuntu.sh
 ```
-
