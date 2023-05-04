@@ -57,8 +57,8 @@ if [ "$RELEASE" = "22.04" ]; then
     sudo apt update 
 fi
 
-if [ "$RELEASE" = "22.10" ]; then
-    sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/kinetic/winehq-kinetic.sources 
+if [ "$RELEASE" = "23.4" ]; then
+    sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/lunar/winehq-lunar.sources
     sudo apt update 
 else 
     echo "Unsupported release"
