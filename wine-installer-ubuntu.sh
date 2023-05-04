@@ -57,7 +57,7 @@ if [ "$RELEASE" = "22.04" ]; then
     sudo apt update 
 fi
 
-if [ "$RELEASE" = "23.4" ]; then
+if [ "$RELEASE" = "23.04" ]; then
     sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/lunar/winehq-lunar.sources
     sudo apt update 
 else 
