@@ -10,8 +10,8 @@ To install wine, Simply copy this:
 Ubuntu:
 ```
 sudo apt install git
-git clone https://github.com/RishonDev/get-wine-latest.sh.git
-cd get-wine-latest.sh
-chmod +x *.sh\
-wine-installer-ubuntu.sh
+git clone https://github.com/RishonDev/winehq-installer.git
+cd winehq-installer
+chmod +x *.sh
+./wine-installer-ubuntu.sh
 ```
