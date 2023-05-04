@@ -17,6 +17,6 @@ echo "Updating script..."
 spin &
 SPIN_PID=$!
 trap "kill -9 $SPIN_PID" `seq 0 15`
-wget https://raw.githubusercontent.com/RishonDev/get-wine-latest.sh/v2.1.0/wine-installer-ubuntu.sh -O ./wine-installer-ubuntu.sh
+wget https://raw.githubusercontent.com/RishonDev/get-wine-latest.sh/main/wine-installer-ubuntu.sh
 kill -9 $SPIN_PID
 echo "Done."
