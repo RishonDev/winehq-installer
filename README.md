@@ -13,5 +13,6 @@ sudo apt install git
 git clone https://github.com/RishonDev/winehq-installer.git
 cd winehq-installer
 chmod +x *.sh
+./wine-unintaller.sh
 ./wine-installer-ubuntu.sh
 ```
