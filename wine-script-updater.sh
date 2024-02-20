@@ -18,5 +18,7 @@ spin &
 SPIN_PID=$!
 trap "kill -9 $SPIN_PID" `seq 0 15`
 wget https://raw.githubusercontent.com/RishonDev/get-wine-latest.sh/main/wine-installer-ubuntu.sh
+wget https://raw.githubusercontent.com/RishonDev/get-wine-latest.sh/main/wine-installer-debian.sh
+wget https://raw.githubusercontent.com/RishonDev/get-wine-latest.sh/main/wine-installer-fedora.sh
 kill -9 $SPIN_PID
 echo "Done."
