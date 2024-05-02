@@ -1,0 +1,6 @@
+- Abort when 32-bit fails
+- Add Fedora support
+- Add Debain Support
+- Improve Efficiency
+- Add flags to uninstall, reinstall, repair
+- Add flags to list a distrubution, and list help
