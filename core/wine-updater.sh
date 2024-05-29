@@ -12,6 +12,7 @@ spin()
     done
   done
 }
+#Insert interactive shell here
 echo "Updating Wine..."
 spin &
 SPIN_PID=$!

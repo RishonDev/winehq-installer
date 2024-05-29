@@ -4,3 +4,4 @@
 - Improve Efficiency
 - Add flags to uninstall, reinstall, repair
 - Add flags to list a distrubution, and list help
+-GUI version (Released 5.0)
