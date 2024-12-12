@@ -83,7 +83,7 @@ echo "1)Stable build (Recommended)"
 echo "2)Development build (Recommended for testing use only)"
 echo "3)Staging build (Recommended for testing use only)"
 read -p "Select build channel:" build -n 1 -r
-if ["$build" = "1"]
+if [ "$build" = "1" ]
   build = "stable"
 fi
 if ["$build" = "2"]
