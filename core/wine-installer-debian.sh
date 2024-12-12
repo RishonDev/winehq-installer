@@ -1,7 +1,7 @@
 while getopts ":v:" opt; do
   case $opt in
     v)
-      echo "3.0.0"
+      echo "4.0.1"
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
@@ -36,7 +36,7 @@ echo "Enabling 32-bit support... "
 spin &
 SPIN_PID=$!
 trap "kill -9 $SPIN_PID" `seq 0 15`
-sudo dpkg --add-architecture i386
+sudo dpkg --add-architecture i386 || { echo 'ERROR: Unable to enable 32-bit support.' ; exit 1; }
 kill -9 $SPIN_PID
 
 

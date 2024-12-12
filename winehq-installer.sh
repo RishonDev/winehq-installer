@@ -17,13 +17,13 @@ fedora(){
 print_usage() {
   echo "Options:"
   echo "-ubuntu       Enters the Ubuntu installer of wine"
-  echo "-fedora       Installs ubuntu version of wine"
-  echo "-debian       Installs debian version of wine"
+  echo "-fedora       Enters the Fedora installer of wine"
+  echo "-debian       Enters the Debian installer of wine"
   echo "-version      Prints app information"
-
-  echo "-verbose"
-  echo "-silent"
-  echo "-log"
+  echo "-upgrade      Upgrades your Wine. Ubuntu updates may be applied for the smooth experience for wine."
+  echo "-verbose      Displays all the logs on screen."
+  echo "-silent       Finishes All the processes with no output. Useful for using it in the background.."
+  echo "-log          Adds debug logs to process any errors."
 
 }
 while getopts 'abf:v' flag; do
