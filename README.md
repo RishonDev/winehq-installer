@@ -1,6 +1,6 @@
-# get-wine-latest.sh
+# winehq_installer.sh
 
-If you get a `permission denied` on any script present in this repository, even with `sudo`, run `sudo. chmod +x *.sh`
+If you get a `permission denied` on any script present in this repository, even with `sudo`, run `sudo. chmod +x *.sh`, open a bug request.
 
 (The READEME.md is not a file to be executed)
 
