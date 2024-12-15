@@ -1,4 +1,4 @@
-# winehq_installer.sh
+# Wine Installer(Orignally as winehq_installer)
 
 If you get a `permission denied` on any script present in this repository, even with `sudo`, run `sudo. chmod +x *.sh`, open a bug request.
 
