@@ -1,8 +1,10 @@
-while getopts ":v:" opt; do
+log_path =""
+while getopts ":vl:" opt; do
   case $opt in
     v)
       echo "4.0.1"
       ;;
+
     \?)
       echo "Invalid option: -$OPTARG" >&2
       echo "-v Displays the version"
@@ -83,6 +85,7 @@ echo "1)Stable build (Recommended)"
 echo "2)Development build (Recommended for testing use only)"
 echo "3)Staging build (Recommended for testing use only)"
 read -p "Select build channel:" build -n 1 -r
+
 if [ "$build" = "1" ]
   build = "stable"
 fi
@@ -99,10 +102,10 @@ if [[ $REPLY =~ ^[Yy]$ ]]
     spin &
     SPIN_PID=$!
     trap "kill -9 $SPIN_PID" `seq 0 15`
-    sudo apt install winehq-"$build" winetricks &> ./logs/installLog.txt
+    sudo apt install winehq-"$build" winetricks &> ./logs/installLog.txt || {echo "ERROR: dpkg locked" && exit 1}
     winecfg &> ./logs/configLog.txt
 else
     echo
     echo "Abort."
 fi
-echo "The logs can be found at" $(pwd)"/"
+echo "The logs can be found at" $(pwd)"/logs/"

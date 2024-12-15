@@ -1,3 +1,4 @@
+RELEASE=$(lsb_release -sr)
 while getopts ":v:" opt; do
   case $opt in
     v)
@@ -11,7 +12,6 @@ while getopts ":v:" opt; do
   esac
 done
 
-RELEASE=$(lsb_release -sr)
 spin()
 {
   spinner="/|\\-/|\\-"
@@ -36,7 +36,7 @@ echo "Enabling 32-bit support... "
 spin &
 SPIN_PID=$!
 trap "kill -9 $SPIN_PID" `seq 0 15`
-sudo dpkg --add-architecture i386
+sudo dpkg --add-architecture i386 || { echo 'ERROR: Unable to enable 32-bit support.' ; exit 1; }
 kill -9 $SPIN_PID
 
 
@@ -44,34 +44,18 @@ echo "Adding the repositories... "
 spin &
 SPIN_PID=$!
 trap "kill -9 $SPIN_PID" `seq 0 15`
-#Insert interactive shell here
-sudo add-apt-repository universe -y &>> ./logs/repoLog2.txt
 {
-if [ "$RELEASE" = "20.04" ]; then
-    sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/focal/winehq-focal.sources
+if [ "$RELEASE" = "41" ]; then
+    dnf5 config-manager addrepo --from-repofile=https://dl.winehq.org/wine-builds/fedora/41/winehq.repo
+    sudo dnf update
+fi
+
+if [ "$RELEASE" = "40" ]; then
+    dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/40/winehq.repo
     sudo apt update
 fi
 
-if [ "$RELEASE" = "22.04" ]; then
-    sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
-    sudo apt update
-fi
-
-if [ "$RELEASE" = "23.10" ]; then
-    sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/mantic/winehq-mantic.sources
-    sudo apt update
-fi
-
-if [ "$RELEASE" = "23.04" ]; then
-    sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/lunar/winehq-lunar.sources
-    sudo apt update
-else
-    echo "Unsupported release"
-fi
-    sudo mkdir -pm755 /etc/apt/keyrings
-    sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-    sudo apt update
-} &> ./logs/repoLog.txt
+} &> ./logs/repoLog.txt || &> /dev/null
 kill -9 $SPIN_PID
 clear
 echo "1)Stable build (Recommended)"
@@ -94,10 +78,10 @@ if [[ $REPLY =~ ^[Yy]$ ]]
     spin &
     SPIN_PID=$!
     trap "kill -9 $SPIN_PID" `seq 0 15`
-    sudo apt install winehq-"$build" winetricks &> ./logs/installLog.txt
+    sudo dnf install winehq-"$build" winetricks &> ./logs/installLog.txt
     winecfg &> ./logs/configLog.txt
 else
     echo
     echo "Abort."
 fi
-echo "The logs can be found at" $(pwd)"/"
+echo "The logs can be found at" $(pwd)"/logs/"

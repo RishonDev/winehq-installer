@@ -101,4 +101,4 @@ else
     echo
     echo "Abort."
 fi
-echo "The logs can be found at" $(pwd)"/"
+echo "The logs can be found at" $(pwd)"/logs/"

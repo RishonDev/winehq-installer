@@ -37,3 +37,4 @@ while getopts 'abf:v' flag; do
        exit 1 ;;
   esac
 done
+echo
