@@ -1,4 +1,4 @@
-# winehq_installer.sh
+# Wine Installer(Orignally as winehq_installer)
 
 If you get a `permission denied` on any script present in this repository, even with `sudo`, run `sudo. chmod +x *.sh`, open a bug request.
 
@@ -16,6 +16,6 @@ sudo apt install git
 git clone https://github.com/RishonDev/winehq-installer.git
 cd winehq-installer
 chmod +x *.sh
-./wine-unintaller.sh
-./wine-installer-ubuntu.sh
+./winehq_installer.sh -r
+./winehq_installer.sh
 ```
