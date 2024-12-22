@@ -1,6 +1,7 @@
 #!/bin/bash
 version="4.0"
 flags=""
+OS=$(lsb_release -is)
 printversion(){
   echo "WineHQ installer version $version"
   echo "Wine "
