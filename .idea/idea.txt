@@ -6,3 +6,5 @@
 - Add flags to list a distrubution, and list help
 -GUI version (Released 5.0)
 -Build wine and install
+- Autopass with gpg encryption, can be turned on or off
+- Revert to the regular wine

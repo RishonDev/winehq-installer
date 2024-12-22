@@ -1,4 +1,0 @@
-Added Interactive shell for : uninstall
-New feature: repair
-Small tweaks.
-Fedora script has been fixed.

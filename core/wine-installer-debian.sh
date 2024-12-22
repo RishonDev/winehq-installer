@@ -1,15 +1,12 @@
 log_path =""
-while getopts ":vl:" opt; do
-  case $opt in
-    v)
-      echo "4.0.1"
-      ;;
-
-    \?)
-      echo "Invalid option: -$OPTARG" >&2
-      echo "-v Displays the version"
-      exit 1
-      ;;
+while true; do
+  case "$1" in
+    -v | --verion ) VERBOSE=true; shift ;;
+    -l | --log ) DEBUG=true; shift ;;
+    -m | --memory ) MEMORY="$2"; shift 2 ;;
+    --debugfile ) DEBUGFILE="$2"; shift 2 ;;
+    -- ) shift; break ;;
+    * ) break ;;
   esac
 done
 
